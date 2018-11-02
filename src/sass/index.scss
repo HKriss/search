@@ -1,0 +1,58 @@
+@import "_minix.scss";
+@import "_common.scss";
+.wrap {
+    width: pxTorem(500px);
+    height: pxTorem(100px);
+    background: #ccc;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    .left {
+        width: pxTorem(100px);
+        height: pxTorem(40px);
+        background: skyblue;
+        text-align: center;
+        line-height: pxTorem(40px);
+        button {
+            border: 0;
+            background: skyblue;
+            color: #fff;
+            font-weight: bold;
+            font-size: pxTorem(16px);
+            outline: none;
+        }
+    }
+    .center {
+        width: pxTorem(480px);
+        position: relative;
+        input {
+            width: pxTorem(450px);
+            height: pxTorem(39px);
+            border: 0;
+            outline: none;
+            padding: 0 pxTorem(15px);
+        }
+        .list {
+            position: absolute;
+            left: 0;
+            top: pxTorem(40px);
+            width: 100%;
+            border: 1px solid #ccc;
+            background: #fff;
+            display: none;
+            li {
+                width: 100%;
+                padding: pxTorem(10px) 0;
+            }
+        }
+    }
+    .right {
+        width: pxTorem(100px);
+        height: pxTorem(40px);
+        button {
+            width: pxTorem(100px);
+            height: pxTorem(40px);
+            outline: none;
+        }
+    }
+}

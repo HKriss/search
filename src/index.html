@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/libs/flexible.js"></script>
+    <script src="js/libs/jquery-3.1.1.min.js"></script>
+    <link rel="stylesheet" href="css/my.css">
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="left"><button>个人</button></div>
+        <div class="center">
+            <input type="text" placeholder="搜索关键字..." class="input">
+            <ul class="list">
+                <!-- <li>111</li>
+                <li>111</li>
+                <li>111</li>
+                <li>111</li>
+                <li>111</li> -->
+            </ul>
+        </div>
+        <div class="right"><button id="btn">搜索</button></div>
+    </div>
+</body>
+<script>
+    var input = document.querySelector('.input');
+    var list = document.querySelector('.list');
+    var btn = document.querySelector("#btn");
+    var timer = null;
+    input.oninput = function() {
+        clearTimeout(timer);
+        var val = this.value.trim();
+        if (val !== "") {
+            timer = setTimeout(function() {
+                var xml = new XMLHttpRequest();
+                xml.open('get', '/api/search?val=' + val, true);
+                xml.onreadystatechange = function() {
+                    if (xml.readyState === 4) {
+                        if (xml.status === 200) {
+                            var data = JSON.parse(xml.responseText);
+                            if (data.code === 0) {
+                                var html = "";
+                                data.msg.forEach(function(item) {
+                                    html += `<li>${item}</li>`;
+                                });
+                                list.innerHTML = html;
+                            }
+                        }
+                    }
+                }
+                xml.send();
+            }, 200)
+        }
+        if (val == '') {
+            list.innerHTML = "";
+        }
+    }
+    btn.onclick = function() {
+        var val = input.value.trim();
+        var xml = new XMLHttpRequest();
+        xml.open('get', '/api/searchBtn?val=' + val, true);
+        xml.onreadystatechange = function() {
+            if (xml.readyState === 4) {
+                if (xml.status === 200) {
+                    var data = JSON.parse(xml.responseText);
+                    if (data.code === 0) {
+                        location.href = './search.html?data' + data.msg;
+                    }
+                }
+            }
+        }
+        xml.send();
+    }
+</script>
+
+</html>

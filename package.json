@@ -1,0 +1,24 @@
+{
+    "name": "search",
+    "version": "1.0.0",
+    "description": "模糊搜索",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "gulp dev"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/HKriss/search.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/HKriss/search/issues"
+    },
+    "homepage": "https://github.com/HKriss/search#readme",
+    "devDependencies": {
+        "gulp": "^4.0.0"
+    }
+}
